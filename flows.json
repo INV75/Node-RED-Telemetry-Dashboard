@@ -1,0 +1,595 @@
+[
+    {
+        "id": "70a4eb346241f12a",
+        "type": "tab",
+        "label": "Vehicle Telemetry",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ed1e632b0aece830",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "3a1b75e591479d89",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "fdda0fcd337f0708",
+        "type": "ui-page",
+        "name": "Vehicle Telemetry Dashboard",
+        "ui": "ed1e632b0aece830",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "3a1b75e591479d89",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "27733cf3fa1d5876",
+        "type": "ui-group",
+        "name": "System Status",
+        "page": "fdda0fcd337f0708",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "37859cf12d4e14ed",
+        "type": "ui-group",
+        "name": "Live Mapping",
+        "page": "fdda0fcd337f0708",
+        "width": 6,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "62e0bf4a4887f668",
+        "type": "ui-group",
+        "name": "OBD-II Engine Metrics",
+        "page": "fdda0fcd337f0708",
+        "width": 6,
+        "height": 1,
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "71b3e091fe590937",
+        "type": "http in",
+        "z": "70a4eb346241f12a",
+        "name": "",
+        "url": "/telemetry",
+        "method": "post",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 580,
+        "y": 280,
+        "wires": [
+            [
+                "6490e1033ffde440",
+                "f848155ba2c5c75c"
+            ]
+        ]
+    },
+    {
+        "id": "6490e1033ffde440",
+        "type": "http response",
+        "z": "70a4eb346241f12a",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 790,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "08304eadbdbdd5c7",
+        "type": "ui-text",
+        "z": "70a4eb346241f12a",
+        "group": "27733cf3fa1d5876",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Date",
+        "label": "Date:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 410,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "187da2f4cf2b83b5",
+        "type": "ui-text",
+        "z": "70a4eb346241f12a",
+        "group": "27733cf3fa1d5876",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Time",
+        "label": "Time",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 410,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "742e9bcc3fa8ef5b",
+        "type": "ui-text",
+        "z": "70a4eb346241f12a",
+        "group": "27733cf3fa1d5876",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Latitude",
+        "label": "Latitude:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 420,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "fc8b86fca686d334",
+        "type": "ui-text",
+        "z": "70a4eb346241f12a",
+        "group": "27733cf3fa1d5876",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "Longitude",
+        "label": "Longitude:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 420,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "b44de3401406cf5c",
+        "type": "ui-gauge",
+        "z": "70a4eb346241f12a",
+        "name": "Engine RPM",
+        "group": "62e0bf4a4887f668",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "RPM",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "5000",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 770,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce83bb621a2efc94",
+        "type": "ui-gauge",
+        "z": "70a4eb346241f12a",
+        "name": "Vehicle Speed",
+        "group": "62e0bf4a4887f668",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "km/h",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "200",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 780,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d8d824fe599d4ca6",
+        "type": "ui-gauge",
+        "z": "70a4eb346241f12a",
+        "name": "Coolant Temp",
+        "group": "62e0bf4a4887f668",
+        "order": 3,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "120",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 780,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ccdfc3f746c3e3d0",
+        "type": "worldmap",
+        "z": "70a4eb346241f12a",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "zoom": "",
+        "layer": "OSMG",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "false",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "showgrid": "false",
+        "showruler": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 1120,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "8d5ea27a41741e73",
+        "type": "ui-template",
+        "z": "70a4eb346241f12a",
+        "group": "37859cf12d4e14ed",
+        "page": "",
+        "ui": "",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<iframe src=\"/worldmap\" style=\"width:100%; height:500px; border:none; border-radius:8px;\"></iframe>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1120,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f848155ba2c5c75c",
+        "type": "function",
+        "z": "70a4eb346241f12a",
+        "name": "Telemetry Splitter",
+        "func": "// Safely unpack incoming data strings into structured JSON\nvar data = (typeof msg.payload === 'string') ? JSON.parse(msg.payload) : msg.payload;\n\n// Separate your single combined stream into distinct data outputs\nvar outDate = { payload: data.date };\nvar outTime = { payload: data.time };\nvar outLat = { payload: data.lat };\nvar outLon = { payload: data.lon };\nvar outRPM = { payload: data.rpm };\nvar outSpeed = { payload: data.speed };\nvar outCoolant = { payload: data.coolant };\n\n// Map-formatted tracking tracker packet\nvar outMap = {\n    payload: {\n        name: \"Vehicle_01\",\n        lat: data.lat,\n        lon: data.lon,\n        icon: \"car\",\n        iconColor: \"red\",\n        line: \"red\" // This forces the engine to draw a permanent trailing route trace line\n    }\n};\n\n// Send outputs sequentially out of the 8 right-side dots\nreturn [outDate, outTime, outLat, outLon, outRPM, outSpeed, outCoolant, outMap];",
+        "outputs": 8,
+        "timeout": "0",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 400,
+        "wires": [
+            [
+                "08304eadbdbdd5c7"
+            ],
+            [
+                "187da2f4cf2b83b5"
+            ],
+            [
+                "742e9bcc3fa8ef5b"
+            ],
+            [
+                "fc8b86fca686d334"
+            ],
+            [
+                "b44de3401406cf5c"
+            ],
+            [
+                "ce83bb621a2efc94"
+            ],
+            [],
+            [
+                "d8d824fe599d4ca6",
+                "ccdfc3f746c3e3d0"
+            ]
+        ]
+    },
+    {
+        "id": "5490499abd3e97b5",
+        "type": "http in",
+        "z": "70a4eb346241f12a",
+        "name": "",
+        "url": "/sim-data",
+        "method": "post",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 560,
+        "y": 180,
+        "wires": [
+            [
+                "72126b170dd918ca"
+            ]
+        ]
+    },
+    {
+        "id": "72126b170dd918ca",
+        "type": "json",
+        "z": "70a4eb346241f12a",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 870,
+        "y": 180,
+        "wires": [
+            [
+                "cee639075735facd",
+                "7966dee96eec7ef6"
+            ]
+        ]
+    },
+    {
+        "id": "cee639075735facd",
+        "type": "http response",
+        "z": "70a4eb346241f12a",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1090,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "7966dee96eec7ef6",
+        "type": "function",
+        "z": "70a4eb346241f12a",
+        "name": "function 1",
+        "func": "// Extract the data from the incoming Python payload\nlet data = msg.payload;\n\n// 1. Format for the Speed Gauge\nlet msgSpeed = { payload: data.speed };\n\n// 2. Format for the RPM Gauge\nlet msgRPM = { payload: data.rpm };\n\n// 3. Format for the Coolant Temp Chart/Gauge\nlet msgTemp = { payload: data.temp };\n\n// 4. Format for the Worldmap Node\nlet msgMap = {\n    payload: {\n        name: \"Curvv\",\n        lat: data.lat,\n        lon: data.lon,\n        icon: \"car\",\n        iconColor: \"blue\"\n    }\n};\n\n// Send to 4 different physical outputs\nreturn [msgSpeed, msgRPM, msgTemp, msgMap];",
+        "outputs": 4,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 260,
+        "wires": [
+            [
+                "ce83bb621a2efc94"
+            ],
+            [
+                "b44de3401406cf5c"
+            ],
+            [
+                "d8d824fe599d4ca6"
+            ],
+            [
+                "ccdfc3f746c3e3d0"
+            ]
+        ]
+    },
+    {
+        "id": "78c36457c1f36875",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.30.2",
+            "node-red-contrib-web-worldmap": "5.8.1"
+        }
+    }
+]
